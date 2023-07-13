@@ -1,68 +1,103 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="refresh" content="0;url=https://api.whatsapp.com/send/?phone=5591984488375&text=Ol%C3%A1&type=phone_number&app_absent=0">
-    <title>Aguarde, você está sendo redirecionado...</title>
-    <!-- Código do Pixel do Facebook -->
-    <script>
-        // Inicialização do Pixel do Facebook
-        !function(f,b,e,v,n,t,s)
-        {
-            if(f.fbq) return;
-            n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq) f._fbq=n;
-            n.push=n;
-            n.loaded=!0;
-            n.version='2.0';
-            n.queue=[];
-            t=b.createElement(e);
-            t.async=!0;
-            t.src=v;
-            s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s);
-        }
-        (window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-        
-        // Inicialização e rastreamento do evento de visualização de página
-        fbq('init', '197797129430440');
-        fbq('track', 'PageView');
-    </script>
-    <!-- Fim do Código do Pixel do Facebook -->
-
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecionamento</title>
     <style>
-        body {
-            background-color: #f2f2f2;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        p {
-            color: #666;
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .loading-gif {
-            display: inline-block;
-            width: 200px;
-            height: 200px;
-            background-image: url(https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.gif);
-            background-size: cover;
-        }
+      /* Estilos para tornar o site responsivo */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .ad-banner {
+        margin: 20px 0;
+        height: 250px;
+        background-color: #f2f2f2;
+      }
+      .redirection-message {
+        margin-bottom: 20px;
+      }
+      .recaptcha-container {
+        margin-bottom: 20px;
+      }
     </style>
-</head>
-<body>
-    <h1>Aguarde, você está sendo redirecionado...</h1>
-    <div class="loading-gif"></div>
-    <p>Se você não for redirecionado automaticamente, clique <a href="https://api.whatsapp.com/send/?phone=5591984488375&text=Ol%C3%A1&type=phone_number&app_absent=0">aqui</a>.</p>
-</body>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Redirecionamento</h1>
+
+      <div class="ad-banner">
+        <!-- Espaço reservado para anúncios do Google Ads -->
+        <!-- Substitua o código abaixo pelos seus códigos de anúncio do Google Ads -->
+        <div
+          class="adsbygoogle"
+          data-ad-client="seu-id-de-cliente"
+          data-ad-slot="slot-1"
+        ></div>
+        <div
+          class="adsbygoogle"
+          data-ad-client="seu-id-de-cliente"
+          data-ad-slot="slot-2"
+        ></div>
+        <div
+          class="adsbygoogle"
+          data-ad-client="seu-id-de-cliente"
+          data-ad-slot="slot-3"
+        ></div>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+
+      <div class="redirection-message">
+        <p>
+          Redirecionando para a página desejada em
+          <span id="timer">10</span> segundos...
+        </p>
+      </div>
+
+      <div class="recaptcha-container">
+        <!-- Adicione o código do reCAPTCHA fornecido pelo Google -->
+        <div class="g-recaptcha" data-sitekey="seu-site-key"></div>
+      </div>
+
+      <script
+        src="https://www.google.com/recaptcha/api.js"
+        async
+        defer
+      ></script>
+      <script>
+        // Lógica para verificar a resposta do reCAPTCHA e redirecionar após a verificação
+        function redirectToPage() {
+          // Aqui você pode adicionar a lógica para verificar a resposta do reCAPTCHA
+          // e tomar a ação apropriada. Por exemplo, você pode fazer uma requisição para
+          // o servidor para verificar a resposta.
+
+          // Após a verificação, inicia o timer de 10 segundos
+          var timerElement = document.getElementById("timer");
+          var seconds = 10;
+          var timer = setInterval(function () {
+            seconds--;
+            timerElement.textContent = seconds;
+            if (seconds <= 0) {
+              clearInterval(timer);
+              // Redireciona para a página desejada
+              window.location.href = "https://www.example.com";
+            }
+          }, 1000);
+        }
+
+        // Chama a função de redirecionamento após o carregamento da página
+        window.onload = redirectToPage;
+      </script>
+    </div>
+  </body>
 </html>
