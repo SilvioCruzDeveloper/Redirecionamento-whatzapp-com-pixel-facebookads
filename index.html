@@ -1,103 +1,143 @@
 <!DOCTYPE html>
 <html>
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1829311703591670"
+    crossorigin="anonymous"
+  ></script>
   <head>
-    <meta charset="UTF-8" />
     <title>Redirecionamento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      /* Estilos para tornar o site responsivo */
       body {
+        background-color: #111;
+        color: #fff;
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
       }
+
       .container {
-        max-width: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 960px;
         margin: 0 auto;
         padding: 20px;
       }
-      .ad-banner {
-        margin: 20px 0;
-        height: 250px;
-        background-color: #f2f2f2;
-      }
-      .redirection-message {
+
+      .ads-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
         margin-bottom: 20px;
       }
-      .recaptcha-container {
-        margin-bottom: 20px;
+
+      .ad {
+        width: 100%;
+        height: 150px;
+        background-color: #222;
+        margin-bottom: 10px;
+      }
+
+      #top-ad-bar {
+        background-color: #333;
+        padding: 10px;
+        text-align: center;
+      }
+
+      #bottom-ad-bar {
+        background-color: #333;
+        padding: 10px;
+        text-align: center;
+      }
+
+      #loading-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #555;
+      }
+
+      #loading-progress {
+        width: 0%;
+        height: 100%;
+        background-color: #f00;
+      }
+
+      #redirect-button {
+        display: none;
+        padding: 10px 20px;
+        margin-top: 20px;
+        background-color: #f00;
+        color: #fff;
+        border: none;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Redirecionamento</h1>
-
-      <div class="ad-banner">
-        <!-- Espaço reservado para anúncios do Google Ads -->
-        <!-- Substitua o código abaixo pelos seus códigos de anúncio do Google Ads -->
-        <div
-          class="adsbygoogle"
-          data-ad-client="seu-id-de-cliente"
-          data-ad-slot="slot-1"
-        ></div>
-        <div
-          class="adsbygoogle"
-          data-ad-client="seu-id-de-cliente"
-          data-ad-slot="slot-2"
-        ></div>
-        <div
-          class="adsbygoogle"
-          data-ad-client="seu-id-de-cliente"
-          data-ad-slot="slot-3"
-        ></div>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
-
-      <div class="redirection-message">
-        <p>
-          Redirecionando para a página desejada em
-          <span id="timer">10</span> segundos...
-        </p>
-      </div>
-
-      <div class="recaptcha-container">
-        <!-- Adicione o código do reCAPTCHA fornecido pelo Google -->
-        <div class="g-recaptcha" data-sitekey="seu-site-key"></div>
-      </div>
-
-      <script
-        src="https://www.google.com/recaptcha/api.js"
-        async
-        defer
-      ></script>
-      <script>
-        // Lógica para verificar a resposta do reCAPTCHA e redirecionar após a verificação
-        function redirectToPage() {
-          // Aqui você pode adicionar a lógica para verificar a resposta do reCAPTCHA
-          // e tomar a ação apropriada. Por exemplo, você pode fazer uma requisição para
-          // o servidor para verificar a resposta.
-
-          // Após a verificação, inicia o timer de 10 segundos
-          var timerElement = document.getElementById("timer");
-          var seconds = 10;
-          var timer = setInterval(function () {
-            seconds--;
-            timerElement.textContent = seconds;
-            if (seconds <= 0) {
-              clearInterval(timer);
-              // Redireciona para a página desejada
-              window.location.href = "https://www.example.com";
-            }
-          }, 1000);
-        }
-
-        // Chama a função de redirecionamento após o carregamento da página
-        window.onload = redirectToPage;
-      </script>
+    <div id="top-ad-bar">
+      <!-- Coloque o código do anúncio do Google AdSense aqui -->
+      <div class="ad">Top Ad</div>
     </div>
+
+    <div class="container">
+      <div class="ads-column">
+        <!-- Coloque o código do anúncio do Google AdSense aqui -->
+        <div class="ad">Ad 1</div>
+        <div class="ad">Ad 2</div>
+        <div class="ad">Ad 3</div>
+      </div>
+      <div id="redirect-container">
+        <h2>Você será redirecionado em 30 segundos...</h2>
+        <div id="loading-bar">
+          <div id="loading-progress"></div>
+        </div>
+        <button id="redirect-button">Redirecionar agora</button>
+      </div>
+      <div class="ads-column">
+        <!-- Coloque o código do anúncio do Google AdSense aqui -->
+        <div class="ad">Ad 4</div>
+        <div class="ad">Ad 5</div>
+        <div class="ad">Ad 6</div>
+      </div>
+    </div>
+
+    <div id="bottom-ad-bar">
+      <!-- Coloque o código do anúncio do Google AdSense aqui -->
+      <div class="ad">Bottom Ad</div>
+    </div>
+
+    <script>
+      // Tempo em segundos para redirecionamento
+      const redirectTime = 30;
+
+      // Intervalo de atualização da barra de carregamento
+      const updateInterval = 1000;
+
+      // Elementos da barra de carregamento
+      const progressBar = document.getElementById("loading-progress");
+      const redirectButton = document.getElementById("redirect-button");
+
+      // Atualiza a barra de carregamento a cada segundo
+      let currentProgress = 0;
+      const progressInterval = setInterval(() => {
+        currentProgress += 100 / redirectTime;
+        progressBar.style.width = `${currentProgress}%`;
+
+        if (currentProgress >= 100) {
+          clearInterval(progressInterval);
+          redirectButton.style.display = "block";
+        }
+      }, updateInterval);
+
+      // Redireciona o usuário ao clicar no botão de redirecionamento
+      redirectButton.addEventListener("click", () => {
+        // Coloque a URL de redirecionamento no atributo 'href'
+        window.location.href = "URL_DO_DESTINO";
+      });
+    </script>
   </body>
 </html>
